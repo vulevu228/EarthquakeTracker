@@ -1,0 +1,24 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment folders (if you use virtualenv locally)
+venv/
+.venv/
+env/
+
+# VS Code & IDE settings
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Local-only run logs (cloud workflow doesn't need these committed)
+earthquake_tracker.log
+
+# Local Windows Task Scheduler helper - superseded by the GitHub Actions
+# cloud schedule, kept out of the public repo since it's machine-specific
+register-earthquake-task.ps1
