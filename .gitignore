@@ -16,9 +16,15 @@ env/
 .DS_Store
 Thumbs.db
 
-# Local-only run logs (cloud workflow doesn't need these committed)
+# Local-only run logs
 earthquake_tracker.log
 
-# Local Windows Task Scheduler helper - superseded by the GitHub Actions
-# cloud schedule, kept out of the public repo since it's machine-specific
+# Local Windows Task Scheduler helper - this is what actually runs the
+# pipeline (see README); kept out of the public repo since it's
+# machine-specific (hardcodes this machine's Python path, etc.)
 register-earthquake-task.ps1
+
+# Legacy SQLite db from before the Postgres migration (2026-08-15). No
+# longer written to - collection now goes straight into local Postgres.
+# Left on disk as a historical artifact, not tracked going forward.
+earthquake_events.db

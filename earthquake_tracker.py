@@ -1,15 +1,23 @@
 import logging
-import sqlite3
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import psycopg2
 import requests
 
-# Resolve paths relative to this file so behavior doesn't depend on CWD.
 BASE_DIR = Path(__file__).resolve().parent
-DB_FILE = BASE_DIR / "earthquake_events.db"
 LOG_FILE = BASE_DIR / "earthquake_tracker.log"
+
+# Connects as the local 'postgres' user with no password argument - libpq
+# picks the password up from %APPDATA%\postgresql\pgpass.conf, so it never
+# has to live in source code or in the Scheduled Task definition.
+PG_CONN_PARAMS = {
+    "host": "localhost",
+    "port": 5432,
+    "dbname": "earthquake_tracker",
+    "user": "postgres",
+}
 
 handlers = [logging.FileHandler(LOG_FILE, encoding="utf-8")]
 if sys.stdout is not None:
@@ -24,10 +32,10 @@ log = logging.getLogger(__name__)
 
 # USGS's real-time GeoJSON summary feed - free, no API key, updated roughly
 # every minute. "all_day" (trailing 24h) rather than "all_hour" (trailing
-# 60min) so an hourly cron has a wide overlap margin - same reasoning as
+# 60min) so a 15-minute cron has a wide overlap margin - same reasoning as
 # conflict_map_tracker.py's overlapping GDELT windows, just simpler since
 # USGS does the windowing server-side instead of 15-minute chunk files.
-USGS_FEED_URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+USGS_FEED_URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
 
 # USGS's feed also includes non-tectonic seismic detections (mining/quarry
 # blasts, explosions) under the same feed - filtered out here since they
@@ -66,9 +74,7 @@ def extract_earthquake_events(geojson):
         events.append(
             {
                 "event_id": event_id,
-                "event_time": datetime.fromtimestamp(event_time_ms / 1000, tz=timezone.utc).strftime(
-                    "%Y-%m-%dT%H:%M:%SZ"
-                ),
+                "event_time": datetime.fromtimestamp(event_time_ms / 1000, tz=timezone.utc),
                 "place": props.get("place"),
                 "mag": float(mag),
                 "mag_type": props.get("magType"),
@@ -88,56 +94,59 @@ def extract_earthquake_events(geojson):
 
 
 def init_db(conn):
-    conn.execute(
-        """
-        CREATE TABLE IF NOT EXISTS earthquake_events (
-            event_id         TEXT PRIMARY KEY,
-            event_time       TEXT,
-            ingested_at      TEXT,
-            place            TEXT,
-            mag              REAL,
-            mag_type         TEXT,
-            depth_km         REAL,
-            lat              REAL,
-            long             REAL,
-            significance     INTEGER,
-            alert            TEXT,
-            tsunami          INTEGER,
-            event_type       TEXT,
-            status           TEXT,
-            source_url       TEXT
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS earthquake_events (
+                event_id         TEXT PRIMARY KEY,
+                event_time       TIMESTAMPTZ,
+                ingested_at      TIMESTAMPTZ,
+                place            TEXT,
+                mag              DOUBLE PRECISION,
+                mag_type         TEXT,
+                depth_km         DOUBLE PRECISION,
+                lat              DOUBLE PRECISION,
+                long             DOUBLE PRECISION,
+                significance     INTEGER,
+                alert            TEXT,
+                tsunami           INTEGER,
+                event_type       TEXT,
+                status           TEXT,
+                source_url       TEXT
+            )
+            """
         )
-        """
-    )
     conn.commit()
 
 
 def insert_events(conn, events):
     """Inserts new earthquake events. Keyed on USGS's own event id, so
-    re-processing the overlapping 24h window every hour never creates
+    re-processing the overlapping 24h window every 15 minutes never creates
     duplicates. Note: USGS revises magnitude/location for a period after an
-    event; INSERT OR IGNORE means a row keeps the values from when it was
-    first seen, not later revisions - same insert-only behavior as
+    event; ON CONFLICT DO NOTHING means a row keeps the values from when it
+    was first seen, not later revisions - same insert-only behavior as
     conflict_map_tracker.py."""
-    ingested_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ingested_at = datetime.now(timezone.utc)
 
     inserted = 0
-    for event in events:
-        cursor = conn.execute(
-            """
-            INSERT OR IGNORE INTO earthquake_events
-                (event_id, event_time, ingested_at, place, mag, mag_type, depth_km,
-                 lat, long, significance, alert, tsunami, event_type, status, source_url)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                event["event_id"], event["event_time"], ingested_at, event["place"],
-                event["mag"], event["mag_type"], event["depth_km"], event["lat"], event["long"],
-                event["significance"], event["alert"], event["tsunami"], event["event_type"],
-                event["status"], event["source_url"],
-            ),
-        )
-        inserted += cursor.rowcount
+    with conn.cursor() as cur:
+        for event in events:
+            cur.execute(
+                """
+                INSERT INTO earthquake_events
+                    (event_id, event_time, ingested_at, place, mag, mag_type, depth_km,
+                     lat, long, significance, alert, tsunami, event_type, status, source_url)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (event_id) DO NOTHING
+                """,
+                (
+                    event["event_id"], event["event_time"], ingested_at, event["place"],
+                    event["mag"], event["mag_type"], event["depth_km"], event["lat"], event["long"],
+                    event["significance"], event["alert"], event["tsunami"], event["event_type"],
+                    event["status"], event["source_url"],
+                ),
+            )
+            inserted += cur.rowcount
 
     conn.commit()
     return inserted
@@ -151,11 +160,19 @@ if __name__ == "__main__":
         matched = extract_earthquake_events(feed)
         log.info(f"{len(feed.get('features', []))} features fetched, {len(matched)} matched as earthquakes")
     except Exception as e:
+        # Exit non-zero rather than silently continuing with an empty batch -
+        # otherwise a real outage (network/USGS down) logs identically to a
+        # genuinely quiet run ("0 new events"), and Task Scheduler would show
+        # a false "success" for a run that fetched nothing.
         log.error(f"Error fetching USGS feed: {e}")
-        matched = []
+        sys.exit(1)
 
-    with sqlite3.connect(DB_FILE) as conn:
-        init_db(conn)
-        new_count = insert_events(conn, matched)
+    try:
+        with psycopg2.connect(**PG_CONN_PARAMS) as conn:
+            init_db(conn)
+            new_count = insert_events(conn, matched)
+    except Exception as e:
+        log.error(f"Error writing to PostgreSQL: {e}")
+        sys.exit(1)
 
     log.info(f"Done. {new_count} new earthquake events inserted (of {len(matched)} matched this run).")

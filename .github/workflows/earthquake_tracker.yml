@@ -1,8 +1,12 @@
 name: Earthquake Seismic Tracker
 
+# No scheduled trigger here on purpose. Collection for this project runs
+# locally (Task Scheduler -> earthquake_tracker.py -> a local PostgreSQL
+# instance, every 15 minutes - see README). GitHub's runners can't reach
+# 'localhost:5432' on this machine, so a cron trigger here would just fail
+# every run. Left as workflow_dispatch in case this ever points at a
+# reachable (cloud-hosted) Postgres instead - flip it back on then.
 on:
-  schedule:
-    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
