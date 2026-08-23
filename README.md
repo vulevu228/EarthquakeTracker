@@ -2,6 +2,12 @@
 
 A small pipeline that quietly watches the planet shake, all day, every day, and turns a rolling month of real seismic activity into a Power BI report you can actually make sense of at a glance.
 
+## Preview
+
+![Earthquake tracker bubble map in Power BI](earthquake_tracker_preview.png)
+
+Every red dot is a real earthquake from the last 30 days — you can see the Pacific Ring of Fire trace itself out just from where the dots cluster. The panel on the right is the same data as a browsable table, a magnitude slicer, and a couple of summary cards (max magnitude, total event count, tsunami warnings).
+
 ## What this is, and why it exists
 
 This is the sibling project to [`tracking_metals`](../tracking_metals) — same basic idea, different signal. That one watches commodity prices and geopolitical tension; this one watches earthquakes. Magnitude, depth, location, tsunami risk, all sourced straight from the USGS, all collected on autopilot in the background while you do literally anything else.
