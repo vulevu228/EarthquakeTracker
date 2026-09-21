@@ -1,0 +1,10 @@
+relationship 67c22a99-e1b3-4219-9c91-cb54d0d20070
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'public earthquake_events'.event_time
+	toColumn: LocalDateTable_a8da196f-3276-47e7-88ee-3e4bdc549d81.Date
+
+relationship 3e8c443b-9daa-4de6-837c-e793f7873187
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'public earthquake_events'.ingested_at
+	toColumn: LocalDateTable_80e8d501-b49b-4372-a909-0e461c69ccc1.Date
+

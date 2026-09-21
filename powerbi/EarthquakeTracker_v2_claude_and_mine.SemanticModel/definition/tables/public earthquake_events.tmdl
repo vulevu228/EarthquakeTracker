@@ -1,0 +1,309 @@
+table 'public earthquake_events'
+	lineageTag: ab5ad1c6-3925-486b-8324-c3ffdf378712
+
+	measure Earthquakes = COUNTROWS('public earthquake_events')
+		formatString: #,##0
+		lineageTag: a36ca8a2-cde2-5baf-b29d-01364bf42d01
+
+	measure 'Strongest Magnitude' = MAX('public earthquake_events'[mag])
+		formatString: \M0.0
+		lineageTag: f5e7fd6d-5cfe-5f68-a57a-43269ad6f766
+
+	measure 'Quakes M5 plus' = CALCULATE(COUNTROWS('public earthquake_events'), 'public earthquake_events'[mag] >= 5)
+		formatString: #,##0
+		lineageTag: 741e2dc1-c12c-50d7-82d4-385a91f6cb69
+
+	measure 'Quakes M4 plus' = CALCULATE(COUNTROWS('public earthquake_events'), 'public earthquake_events'[mag] >= 4)
+		formatString: #,##0
+		lineageTag: 9e53645f-417c-55c3-8c13-61ac7988c17a
+
+	measure 'High Alerts' = CALCULATE(COUNTROWS('public earthquake_events'), 'public earthquake_events'[alert] IN {"orange", "red"})
+		formatString: #,##0
+		lineageTag: 2c7ac821-bcd6-5eca-8759-6f1d8fa75a0b
+
+	measure 'PAGER Alerts' = CALCULATE(COUNTROWS('public earthquake_events'), NOT ISBLANK('public earthquake_events'[alert]))
+		formatString: #,##0
+		lineageTag: 966d4cc3-6246-5b19-b858-1f8710e21dfe
+
+	measure 'Tsunami Flagged' = CALCULATE(COUNTROWS('public earthquake_events'), 'public earthquake_events'[tsunami] = 1)
+		formatString: #,##0
+		lineageTag: 824053e2-9f72-52db-b1bd-e3bd5394de4d
+
+	measure 'Average Depth km' = AVERAGE('public earthquake_events'[depth_km])
+		formatString: 0
+		lineageTag: 77605e95-d467-52ca-8ce3-3eca10073dcd
+
+	measure 'Last 24 Hours' =
+			VAR Latest = CALCULATE(MAX('public earthquake_events'[event_time]), ALL('public earthquake_events'))
+			RETURN CALCULATE(COUNTROWS('public earthquake_events'), 'public earthquake_events'[event_time] > Latest - 1)
+		formatString: #,##0
+		lineageTag: fd4a2f74-4d06-57b7-a508-75aaeeac8b95
+
+	measure 'Daily Average' = DIVIDE([Earthquakes], DISTINCTCOUNT('public earthquake_events'[event_date]))
+		formatString: #,##0
+		lineageTag: 0eae6c31-9ef2-5d1c-a22d-fb733358b3e1
+
+	measure 'Top Region M4 plus' =
+			VAR R = RANKX(ALL('public earthquake_events'[region]), [Quakes M4 plus], , DESC, Dense)
+			RETURN IF([Quakes M4 plus] > 0 && R <= 10, [Quakes M4 plus])
+		formatString: #,##0
+		lineageTag: 4687e612-7914-55b1-9a3c-f2cdc087a46b
+
+	measure 'Earthquakes Delta Text' = "about " & FORMAT([Daily Average], "#,##0") & " a day"
+		lineageTag: 687482fb-e90b-55a1-9e72-122c7f8df447
+
+	measure 'Last 24 Hours Delta Text' =
+			VAR Chg = DIVIDE([Last 24 Hours] - [Daily Average], [Daily Average])
+			RETURN IF(ISBLANK(Chg), "no data", IF(Chg >= 0, UNICHAR(9650), UNICHAR(9660)) & " " & FORMAT(ABS(Chg), "0%") & " vs the daily average")
+		lineageTag: e3acd509-18e0-56c9-a660-b34ace138fd7
+
+	measure 'Strongest Delta Text' =
+			VAR M = [Strongest Magnitude]
+			RETURN IF(ISBLANK(M), "no data", CALCULATE(MAX('public earthquake_events'[region]), 'public earthquake_events'[mag] = M) & " · " & FORMAT(CALCULATE(MAX('public earthquake_events'[event_time]), 'public earthquake_events'[mag] = M), "d MMM"))
+		lineageTag: fdbfc7c7-bb06-54b8-b710-440a78bddde0
+
+	measure 'M5 plus Delta Text' = IF([Earthquakes] = 0, "no data", FORMAT(DIVIDE([Quakes M5 plus], [Earthquakes]), "0.0%") & " of all earthquakes")
+		lineageTag: 8d33bc23-9742-5e81-819a-22c642b05dbe
+
+	measure 'Alerts Delta Text' = "of " & FORMAT([PAGER Alerts], "#,##0") & " with a PAGER alert"
+		lineageTag: 75f1b837-2b9c-5cbb-be79-bafe94c084f8
+
+	measure 'Tsunami Delta Text' = "USGS flag for ocean quakes, not a warning"
+		lineageTag: 88f7c5ee-8ed2-588d-9cf7-5bca4ad31a57
+
+	column event_id
+		dataType: string
+		lineageTag: b2f72ebe-0a21-4e76-ae17-2baf906fe1e0
+		summarizeBy: none
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 20cd11e0-1439-4739-b27d-ac5fe6a089a1
+		summarizeBy: none
+		sourceColumn: event_time
+
+		variation Variation
+			isDefault
+			relationship: 67c22a99-e1b3-4219-9c91-cb54d0d20070
+			defaultHierarchy: LocalDateTable_a8da196f-3276-47e7-88ee-3e4bdc549d81.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingested_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6df7add1-7b0a-470d-97e8-802d9e513aaa
+		summarizeBy: none
+		sourceColumn: ingested_at
+
+		variation Variation
+			isDefault
+			relationship: 3e8c443b-9daa-4de6-837c-e793f7873187
+			defaultHierarchy: LocalDateTable_80e8d501-b49b-4372-a909-0e461c69ccc1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column place
+		dataType: string
+		lineageTag: 341256ce-990b-4b5d-a346-28c3f0582fac
+		summarizeBy: none
+		sourceColumn: place
+
+		annotation SummarizationSetBy = Automatic
+
+	column mag
+		dataType: double
+		lineageTag: cf8b7834-1665-4df4-9bea-b43f59f29be5
+		summarizeBy: sum
+		sourceColumn: mag
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mag_type
+		dataType: string
+		lineageTag: 9bf971e7-dd5f-41cd-839f-b04de0c9ebeb
+		summarizeBy: none
+		sourceColumn: mag_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column depth_km
+		dataType: double
+		lineageTag: 149c6d1a-ac15-44d6-acf8-6b84481a12d5
+		summarizeBy: sum
+		sourceColumn: depth_km
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lat
+		dataType: double
+		lineageTag: 10cb7975-3d12-4f28-8f47-d8d5cb0d37be
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column long
+		dataType: double
+		lineageTag: 5d4c4310-7f2d-4628-9085-5e25bc647da4
+		summarizeBy: sum
+		sourceColumn: long
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column significance
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a06e406-8760-4254-b376-3f4e81c840cf
+		summarizeBy: sum
+		sourceColumn: significance
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert
+		dataType: string
+		lineageTag: 71652d17-bfa8-4d5e-8713-347cf6d49454
+		summarizeBy: none
+		sourceColumn: alert
+
+		annotation SummarizationSetBy = Automatic
+
+	column tsunami
+		dataType: int64
+		formatString: 0
+		lineageTag: a0994f33-d2d5-4b1b-9ce2-a6addefb6aa6
+		summarizeBy: sum
+		sourceColumn: tsunami
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type
+		dataType: string
+		lineageTag: 7335fbbc-02ba-48af-b779-ea3d8c04e2bc
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: ef28ed33-6bd0-4e35-8a0f-fc7a4ea415b2
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_url
+		dataType: string
+		lineageTag: f1b62370-17d5-4657-a04a-bab3b41b4400
+		summarizeBy: none
+		sourceColumn: source_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3b482fc3-4ca6-5af8-b166-99d281feb3f2
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column mag_band
+		dataType: string
+		lineageTag: ecc784ab-b508-57f4-b3f1-225747d2f994
+		summarizeBy: none
+		sourceColumn: mag_band
+		sortByColumn: mag_band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column mag_band_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5f1b1660-a96e-5dc7-9d5c-c120acf1392d
+		summarizeBy: none
+		sourceColumn: mag_band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column depth_band
+		dataType: string
+		lineageTag: 117f5c47-44cf-59c9-be0b-02794ef069b5
+		summarizeBy: none
+		sourceColumn: depth_band
+		sortByColumn: depth_band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column depth_band_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f2b3f533-e37a-509d-abbb-e103c6828ba4
+		summarizeBy: none
+		sourceColumn: depth_band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 1d3aedf2-10fd-564a-97b6-897c5198995e
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_level
+		dataType: string
+		lineageTag: 5909bb1f-71b6-5225-b211-b2fe2dfdeb2b
+		summarizeBy: none
+		sourceColumn: alert_level
+		sortByColumn: alert_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 76aac26f-fd6e-5480-a827-445c2bde9803
+		summarizeBy: none
+		sourceColumn: alert_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public earthquake_events' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost:5432", "earthquake_tracker"),
+				  #"Navigation 1" = Source{[Schema = "public", Item = "earthquake_events"]}[Data],
+				  #"Added event date" = Table.AddColumn(#"Navigation 1", "event_date", each DateTime.Date(DateTime.From([event_time])), type date),
+				  #"Added magnitude band" = Table.AddColumn(#"Added event date", "mag_band", each if [mag] < 2 then "Under 2" else if [mag] < 3 then "2 to 3" else if [mag] < 4 then "3 to 4" else if [mag] < 5 then "4 to 5" else if [mag] < 6 then "5 to 6" else "6 and above", type text),
+				  #"Added magnitude order" = Table.AddColumn(#"Added magnitude band", "mag_band_order", each if [mag] < 2 then 1 else if [mag] < 3 then 2 else if [mag] < 4 then 3 else if [mag] < 5 then 4 else if [mag] < 6 then 5 else 6, Int64.Type),
+				  #"Added depth band" = Table.AddColumn(#"Added magnitude order", "depth_band", each if [depth_km] < 70 then "Shallow (under 70 km)" else if [depth_km] < 300 then "Intermediate (70 to 300 km)" else "Deep (over 300 km)", type text),
+				  #"Added depth order" = Table.AddColumn(#"Added depth band", "depth_band_order", each if [depth_km] < 70 then 1 else if [depth_km] < 300 then 2 else 3, Int64.Type),
+				  // region = the part of the USGS place text after the last comma ("68 km NNW of Ende, Indonesia" -> Indonesia)
+				  #"Added region" = Table.AddColumn(#"Added depth order", "region", each let t = Text.Trim(Text.Replace(Text.AfterDelimiter([place], ", ", {0, RelativePosition.FromEnd}), " Earthquake", "")), r = if t = null or t = "" then [place] else t in if r = "CA" then "California" else if r = "MX" then "Mexico" else r, type text),
+				  #"Added alert level" = Table.AddColumn(#"Added region", "alert_level", each if [alert] = null then null else Text.Proper([alert]), type text),
+				  #"Added alert order" = Table.AddColumn(#"Added alert level", "alert_order", each if [alert] = "green" then 1 else if [alert] = "yellow" then 2 else if [alert] = "orange" then 3 else if [alert] = "red" then 4 else null, Int64.Type)
+				in
+				  #"Added alert order"
+

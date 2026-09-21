@@ -1,0 +1,2952 @@
+cultureInfo en-GB
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "public_earthquake_event": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "public earthquake_event": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.event_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "event_id"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "event_id": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "event": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "event identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "occurrence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "affair": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "episode": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "occasion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "happening": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "incident": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.event_time": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "event_time"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event time": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "event_time": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "event duration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event interval": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "event timetable": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Time": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.event_time.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "event_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event time date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "time date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.event_time.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "event_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event time year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "event time yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "time yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "event duration year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event interval year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "duration year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "event period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.event_time.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "event_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event time quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "event time qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "time qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "event duration quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event interval quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "duration quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "event period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.event_time.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "event_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event time month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "event time mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "time mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "event duration month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event interval month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "duration month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "event period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.event_time.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "event_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event time day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "event duration day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event interval day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "event moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "duration day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "event period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "event timetable day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "timetable day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.ingested_at": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "ingested_at"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ingested at": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ingested_at": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.ingested_at.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "ingested_at",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ingested at date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.ingested_at.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "ingested_at",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ingested at year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ingested at yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.ingested_at.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "ingested_at",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ingested at quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ingested at qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.ingested_at.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "ingested_at",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ingested at month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ingested at mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.ingested_at.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "VariationSource": "ingested_at",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ingested at day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "public_earthquake_event.place": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "place"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "place": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "residence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "apartment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "habitation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "home": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "dwelling": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "room": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "domicile": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "abode": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "housing": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "house": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "Location": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.mag": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "mag"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mag": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "publication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "periodical": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "weekly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "monthly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "quarterly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "Magnitude": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.mag_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "mag_type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mag type": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "mag_type": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "type": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "mag category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mag genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mag manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mag variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "mag brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "mag class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.depth_km": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "depth_km"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "depth km": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "depth_km": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "km": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "Depth (km)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.lat": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "lat"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "lat": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Latitude": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.long": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "long"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "long": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time-consuming": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "lingering": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "Longitude": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.significance": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "significance"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "significance": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "implication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "consequence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "connotation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "meaning": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "import": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "worth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "substance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "magnitude": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.alert": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "alert"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "alert": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ready": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.tsunami": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "tsunami"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tsunami": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.event_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "event_type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "event type": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "event_type": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "type": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "event category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "event brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "event class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "status": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "position": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_event.source_url": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "source_url"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "source url": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "source_url": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "url": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "source website": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "website": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "source site": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "site": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "source web address": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.589
+			          }
+			        },
+			        {
+			          "web address": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.571
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_events.alert_level": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "alert_level"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "PAGER alert": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "public_earthquake_events.earthquakes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "public earthquake_events",
+			          "ConceptualProperty": "Earthquakes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Earthquakes": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "public_earthquake_event_ingested_at_date_hierarchy_has_public_earthquake_event_ingested_at_day": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.ingested_at.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at.day": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.ingested_at.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.ingested_at.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ingested_at_date_hierarchy_have_ingested_at_day"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_ingested_at_date_hierarchy_has_public_earthquake_event_ingested_at_month": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.ingested_at.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at.month": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.ingested_at.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.ingested_at.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ingested_at_date_hierarchy_have_ingested_at_month"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_ingested_at_date_hierarchy_has_public_earthquake_event_ingested_at_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.ingested_at.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at.quarter": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.ingested_at.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.ingested_at.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ingested_at_date_hierarchy_have_ingested_at_quarter"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_ingested_at_date_hierarchy_has_public_earthquake_event_ingested_at_year": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.ingested_at.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at.year": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.ingested_at.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.ingested_at.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ingested_at_date_hierarchy_have_ingested_at_year"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_ingested_at_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.ingested_at": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.ingested_at"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.ingested_at.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "ingested_at_have_ingested_at_date_hierarchy"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_event_time_date_hierarchy_has_public_earthquake_event_event_time_day": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.event_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.event_time.day": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.event_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_time.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "event_time_date_hierarchies_have_event_time_days"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_event_time_date_hierarchy_has_public_earthquake_event_event_time_month": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.event_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.event_time.month": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.event_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_time.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "event_time_date_hierarchies_have_event_time_months"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_event_time_date_hierarchy_has_public_earthquake_event_event_time_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.event_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.event_time.quarter": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.event_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_time.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "event_time_date_hierarchies_have_event_time_quarters"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_event_time_date_hierarchy_has_public_earthquake_event_event_time_year": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.event_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.date_hierarchy"
+			          }
+			        },
+			        "public_earthquake_event.event_time.year": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.event_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_time.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "event_time_date_hierarchies_have_event_time_years"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_event_time_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event.event_time": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time"
+			          }
+			        },
+			        "public_earthquake_event.event_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event.event_time"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_time.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "event_times_have_event_time_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_source_url": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.source_url": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.source_url"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.source_url"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_source_urls"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_status": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.status": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.status"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.status"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_statuses"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_event_type": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.event_type": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_event_types"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_tsunami": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.tsunami": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.tsunami"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.tsunami"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_tsunamis"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_alert": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.alert": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.alert"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.alert"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_alerts"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_significance": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.significance": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.significance"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.significance"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_significances"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_long": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.long": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.long"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.long"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_longs"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_lat": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.lat": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.lat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.lat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_lats"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_depth_km": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.depth_km": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.depth_km"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.depth_km"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_depth_km"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_mag_type": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.mag_type": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.mag_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.mag_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_mag_types"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_mag": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.mag": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.mag"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.mag"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_mags"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_place": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.place": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.place"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.place"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_places"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_ingested_at": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.ingested_at"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_ingested_at"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_event_time": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.event_time": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_time"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_event_times"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_has_event_id": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.event_id": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Object": {
+			              "Role": "public_earthquake_event.event_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_have_event_ids"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_in_place": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.place": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.place"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "public_earthquake_event.place"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "public_earthquake_event"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "public_earthquake_event.place"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "public_earthquake_events_are_in_places"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_is_ingested_on_ingested_at": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.ingested_at": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.ingested_at"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "public_earthquake_event.ingested_at"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "ingest": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "public_earthquake_event"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "public_earthquake_events_are_ingested_on_ingested_at"
+			        }
+			      ]
+			    },
+			    "public_earthquake_event_is_evented_on_event_time": {
+			      "Binding": {
+			        "ConceptualEntity": "public earthquake_events"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "public_earthquake_event": {
+			          "Target": {
+			            "Entity": "public_earthquake_event"
+			          }
+			        },
+			        "public_earthquake_event.event_time": {
+			          "Target": {
+			            "Entity": "public_earthquake_event.event_time"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "public_earthquake_event.event_time"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "event": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "public_earthquake_event"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "public_earthquake_events_are_evented_on_event_times"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

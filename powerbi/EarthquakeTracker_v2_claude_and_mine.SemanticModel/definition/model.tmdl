@@ -1,0 +1,22 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["public earthquake_events"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'public earthquake_events'
+ref table DateTableTemplate_db998825-39f1-4d3d-9484-2e1417aef6d6
+ref table LocalDateTable_a8da196f-3276-47e7-88ee-3e4bdc549d81
+ref table LocalDateTable_80e8d501-b49b-4372-a909-0e461c69ccc1
+
+ref cultureInfo en-GB
+

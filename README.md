@@ -4,13 +4,26 @@ A small pipeline that quietly watches the planet shake, all day, every day, and 
 
 ## Preview
 
-![Earthquake tracker bubble map in Power BI](earthquake_tracker_preview.png)
+A two-page Power BI report: a big live map, and an analysis page for the numbers behind it.
 
-Every red dot is a real earthquake from the last 30 days — you can see the Pacific Ring of Fire trace itself out just from where the dots cluster. The panel on the right is the same data as a browsable table, a magnitude slicer, and a couple of summary cards (max magnitude, total event count, tsunami warnings).
+### Live map
+![Live map: every earthquake of the last 30 days as a red bubble, with summary cards, a magnitude slicer and the newest earthquakes](images/earthquake-1-live-map.png)
+
+Every red dot is a real earthquake from the last 30 days, sized by magnitude. The Pacific Ring of Fire traces itself out just from where the dots cluster. The right-hand column has four cards (earthquakes, strongest, orange/red alerts, USGS tsunami flag), a magnitude slicer that filters the whole report, and a newest-first table.
+
+### Analysis
+![Analysis: six summary cards, earthquakes per day, magnitude and depth bands, top regions, PAGER alert levels and the strongest earthquakes](images/earthquake-2-analysis.png)
+
+The map shows where; this page shows how much. Six cards with a line of context each (for example the last 24 hours against the daily average), then earthquakes per day, how strong they are (magnitude bands), how deep they are, the top 10 regions for magnitude 4 and above, the USGS impact alert levels, and a table of the strongest earthquakes.
+
+**Reading it correctly**
+- USGS lists small earthquakes mostly in the US, so Alaska and California dominate the raw count. That is why the region chart only counts magnitude 4 and above; use the magnitude slicer for any global comparison.
+- The **tsunami flag** is set by USGS for large earthquakes in oceanic regions. It does not mean a tsunami happened or that a warning was issued.
+- **PAGER alerts** (green to red) are USGS's estimate of impact, and most earthquakes have none.
 
 ## What this is, and why it exists
 
-This is the sibling project to [`tracking_metals`](../tracking_metals) — same basic idea, different signal. That one watches commodity prices and geopolitical tension; this one watches earthquakes. Magnitude, depth, location, tsunami risk, all sourced straight from the USGS, all collected on autopilot in the background while you do literally anything else.
+This is the sibling project to [MacroConflictTracker](https://github.com/vulevu228/MacroConflictTracker) — same basic idea, different signal. That one watches commodity prices and geopolitical tension; this one watches earthquakes. Magnitude, depth, location, tsunami risk, all sourced straight from the USGS, all collected on autopilot in the background while you do literally anything else.
 
 There isn't a grand analytical thesis behind it beyond "build a real, live pipeline end to end and watch something true happen on a map." That said, a clean magnitude/depth/location dataset like this is a decent foundation if the itch to go further ever comes back — clustering along known fault lines, checking whether bigger quakes correlate with tsunami alerts, that kind of thing. For now it's a working pipeline and a report that looks genuinely good, which was the actual goal.
 
@@ -32,7 +45,9 @@ That's the whole loop. No servers to maintain, no cloud costs, nothing to babysi
 | File | What it's for |
 |---|---|
 | `earthquake_tracker.py` | The whole pipeline in one script: fetch the USGS feed, filter to real earthquakes, insert new ones into Postgres. This is what Task Scheduler runs every 15 minutes. |
-| `earthquake_tracker_visuals.pbix` | The Power BI report itself — a bubble map plus supporting tables, cards, and a magnitude slicer, all reading live from the local Postgres database. |
+| `powerbi/EarthquakeTracker_v2_claude_and_mine.pbip` | The current Power BI report (a Power BI project): the Live map page and the Analysis page, reading live from the local Postgres database. |
+| `powerbi/EarthquakeTracker_v1_mine.pbix` | My original single-page report (map, table, cards, slicer), built by hand. Kept for reference; the `.pbip` above replaces it. |
+| `images/` | The report previews shown above. |
 | `requirements.txt` | The two Python packages the script needs: `requests` (to call the USGS feed) and `psycopg2-binary` (to talk to Postgres). |
 | `.github/workflows/earthquake_tracker.yml` | A GitHub Actions workflow that exists but is intentionally dormant — see "About that GitHub Actions file" below. |
 | `register-earthquake-task.ps1` | The script that sets up the Windows Scheduled Task that actually drives everything. Not tracked in this repo (it's machine-specific), but described in full below so it can be recreated anywhere. |
@@ -54,17 +69,19 @@ Everything lands in a single table, `earthquake_events`, in the local `earthquak
 | `depth_km` | `geometry.coordinates[2]` | How far below the surface |
 | `lat` / `long` | `geometry.coordinates[1]` / `[0]` | Pre-geocoded by USGS, no extra work needed on this end |
 | `significance` | `properties.sig` | USGS's own composite severity score (0–1000+) |
-| `alert` | `properties.alert` | PAGER alert level — green / yellow / orange / red, or blank for most events |
-| `tsunami` | `properties.tsunami` | 1 if a tsunami warning was associated with the event |
+| `alert` | `properties.alert` | PAGER estimated-impact level: green / yellow / orange / red, or blank for most events |
+| `tsunami` | `properties.tsunami` | USGS sets this to 1 for large earthquakes in oceanic regions. It does not mean a tsunami occurred or a warning was issued |
 | `event_type` | `properties.type` | Always `earthquake` after filtering |
 | `status` | `properties.status` | `reviewed` or `automatic`, USGS's own confidence label |
 | `source_url` | `properties.url` | Direct link back to the USGS event page, handy for double-checking anything that looks surprising |
 
 ## Power BI
 
-`earthquake_tracker_visuals.pbix` is a single-page report with a bubble map (`lat`/`long` for position, `mag` for bubble size, plus `place`, `depth_km`, and `event_time` in the tooltip), a table for browsing individual events, two summary cards, and a magnitude slicer for filtering the map down to whatever severity range you actually care about.
+The report is a Power BI project in [`powerbi/`](powerbi/): open [`EarthquakeTracker_v2_claude_and_mine.pbip`](powerbi/EarthquakeTracker_v2_claude_and_mine.pbip) in Power BI Desktop. My original single-page `.pbix` sits next to it as [`EarthquakeTracker_v1_mine.pbix`](powerbi/EarthquakeTracker_v1_mine.pbix).
 
-It connects straight to the local Postgres database, so getting a current view is just: open the file, hit Refresh. No `git pull` step is needed here the way it is for `tracking_metals` — there's no committed data file standing between the source and the report, Power BI talks to the live database directly. The one thing worth doing once, if it isn't already, is telling Power BI to remember the Postgres credentials (Power BI Desktop → File → Options and Settings → Data source settings) so Refresh never stalls on a login prompt.
+It connects straight to the local Postgres database (`localhost:5432`, database `earthquake_tracker`), so getting a current view is just: open the file, hit Refresh. No `git pull` step is needed here the way it is for MacroConflictTracker: there is no committed data file standing between the source and the report, Power BI talks to the live database directly. The one thing worth doing once, if it isn't already, is telling Power BI to remember the Postgres credentials (Power BI Desktop → File → Options and Settings → Data source settings) so Refresh never stalls on a login prompt.
+
+**What the model adds on top of the raw table.** Power Query derives a few columns that make the charts readable: the day of each earthquake, a magnitude band (under 2, 2 to 3, and so on), a depth band (shallow under 70 km, intermediate 70 to 300 km, deep over 300 km), a region (the text after the last comma of `place`, so "68 km NNW of Ende, Indonesia" becomes Indonesia) and the PAGER alert level in a sortable form. The cards and delta lines are DAX measures (earthquakes, strongest, magnitude 5 or more, last 24 hours against the daily average, and so on).
 
 ## Scheduling — where the automation actually lives
 
@@ -84,7 +101,7 @@ For now, though: all the real collection happens locally, and that's by design, 
 
 ## The SQLite file you'll see sitting here — `earthquake_events.db`
 
-This project actually started on SQLite, following the exact same pattern as `tracking_metals`' `.db` files. It worked fine, but partway through building this out, it made more sense to move to a proper local Postgres instance instead — better suited to a table that was going to keep growing, and a more natural fit once the plan became "run this continuously, forever," rather than "log a few events and see what happens."
+This project actually started on SQLite, following the exact same pattern as MacroConflictTracker's `.db` files. It worked fine, but partway through building this out, it made more sense to move to a proper local Postgres instance instead — better suited to a table that was going to keep growing, and a more natural fit once the plan became "run this continuously, forever," rather than "log a few events and see what happens."
 
 The SQLite file is still sitting in this folder as a leftover — its last real write was back on 2026-08-15, right around the point of the switch. It's not part of the live pipeline anymore and isn't tracked in this repo going forward (it's in `.gitignore` now). Kept around locally purely as a historical artifact, nothing more.
 
@@ -96,7 +113,7 @@ If you're reading this and want to recreate the pipeline on a different machine,
 2. Create a database named `earthquake_tracker` (the script's `init_db()` step will create the `earthquake_events` table itself on first run — no manual schema setup needed).
 3. Set up a `pgpass.conf` file (`%APPDATA%\postgresql\pgpass.conf` on Windows) with the connection details, so the script never has to prompt for or store a password.
 4. `pip install -r requirements.txt`.
-5. Run `register-earthquake-task.ps1` to register the Scheduled Task — it auto-detects a real Python install and sets everything up to run silently every hour by default (pass `-IntervalHours` to change that; this project currently runs it more often, every 15 minutes).
-6. Open `earthquake_tracker_visuals.pbix` in Power BI Desktop, point its data source at your own Postgres instance, and refresh.
+5. Run `register-earthquake-task.ps1` to register the Scheduled Task — it auto-detects a real Python install and sets everything up to run silently every 15 minutes by default (pass `-IntervalMinutes` to change that).
+6. Open `powerbi/EarthquakeTracker_v2_claude_and_mine.pbip` in Power BI Desktop, point its data source at your own Postgres instance (Transform data, then the `public earthquake_events` query), and refresh.
 
 That's genuinely the whole setup. No API keys, no paid services, no cloud infrastructure — just USGS's free feed, a local database, and a scheduled task doing its thing quietly in the background.
