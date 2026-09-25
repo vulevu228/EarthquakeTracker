@@ -307,3 +307,7 @@ table 'public earthquake_events'
 				in
 				  #"Added alert order"
 
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
