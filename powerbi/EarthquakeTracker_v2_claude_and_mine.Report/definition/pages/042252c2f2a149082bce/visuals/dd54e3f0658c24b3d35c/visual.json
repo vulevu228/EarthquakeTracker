@@ -191,6 +191,19 @@
             }
           }
         }
+      ],
+      "mapStyles": [
+        {
+          "properties": {
+            "mapTheme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'aerial'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
