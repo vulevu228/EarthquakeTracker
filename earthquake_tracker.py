@@ -1,6 +1,7 @@
 import logging
 import sys
-from datetime import datetime, timezone
+import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import psycopg2
@@ -44,10 +45,19 @@ EVENT_TYPE_FILTER = "earthquake"
 
 
 def fetch_feed():
-    """Downloads and parses the USGS real-time earthquake GeoJSON feed."""
-    response = requests.get(USGS_FEED_URL, timeout=30)
-    response.raise_for_status()
-    return response.json()
+    """Downloads and parses the USGS real-time earthquake GeoJSON feed. The
+    month feed is ~10 MB, so a slow read or dropped connection gets two more
+    tries before the run counts as failed."""
+    for attempt in range(3):
+        try:
+            response = requests.get(USGS_FEED_URL, timeout=60)
+            response.raise_for_status()
+            return response.json()
+        except (requests.RequestException, ValueError) as e:
+            if attempt == 2:
+                raise
+            log.info(f"USGS feed attempt {attempt + 1}/3 failed ({type(e).__name__}), retrying")
+            time.sleep(10 * (attempt + 1))
 
 
 def extract_earthquake_events(geojson):
@@ -119,37 +129,74 @@ def init_db(conn):
     conn.commit()
 
 
-def insert_events(conn, events):
-    """Inserts new earthquake events. Keyed on USGS's own event id, so
-    re-processing the overlapping 24h window every 15 minutes never creates
-    duplicates. Note: USGS revises magnitude/location for a period after an
-    event; ON CONFLICT DO NOTHING means a row keeps the values from when it
-    was first seen, not later revisions - same insert-only behavior as
-    conflict_map_tracker.py."""
-    ingested_at = datetime.now(timezone.utc)
+REVISABLE = ("event_time", "place", "mag", "mag_type", "depth_km", "lat", "long",
+             "significance", "alert", "tsunami", "event_type", "status", "source_url")
 
-    inserted = 0
+
+def upsert_events(conn, events):
+    """Inserts new earthquake events and applies USGS's revisions to known
+    ones. Keyed on USGS's own event id, so re-processing the month feed every
+    15 minutes never creates duplicates. USGS revises magnitude, location and
+    status (automatic -> reviewed) for days after an event, so those fields
+    follow the feed; ingested_at stays the time the event was first seen.
+    Returns (inserted, revised)."""
+    ingested_at = datetime.now(timezone.utc)
+    cols = ", ".join(REVISABLE)
+    updates = ", ".join(f"{c} = EXCLUDED.{c}" for c in REVISABLE)
+
+    inserted = revised = 0
     with conn.cursor() as cur:
         for event in events:
             cur.execute(
-                """
-                INSERT INTO earthquake_events
-                    (event_id, event_time, ingested_at, place, mag, mag_type, depth_km,
-                     lat, long, significance, alert, tsunami, event_type, status, source_url)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                ON CONFLICT (event_id) DO NOTHING
+                f"""
+                INSERT INTO earthquake_events (event_id, ingested_at, {cols})
+                VALUES (%s, %s, {", ".join(["%s"] * len(REVISABLE))})
+                ON CONFLICT (event_id) DO UPDATE SET {updates}
+                WHERE ({", ".join(f"earthquake_events.{c}" for c in REVISABLE)})
+                      IS DISTINCT FROM ({", ".join(f"EXCLUDED.{c}" for c in REVISABLE)})
+                RETURNING (xmax = 0)
                 """,
-                (
-                    event["event_id"], event["event_time"], ingested_at, event["place"],
-                    event["mag"], event["mag_type"], event["depth_km"], event["lat"], event["long"],
-                    event["significance"], event["alert"], event["tsunami"], event["event_type"],
-                    event["status"], event["source_url"],
-                ),
+                (event["event_id"], ingested_at, *(event[c] for c in REVISABLE)),
             )
-            inserted += cur.rowcount
+            row = cur.fetchone()  # None: known and unchanged
+            if row:
+                inserted += row[0]
+                revised += not row[0]
 
     conn.commit()
-    return inserted
+    return inserted, revised
+
+
+def remove_withdrawn(conn, events):
+    """Rows inside the feed's window that the feed no longer lists as an
+    earthquake were deleted by USGS, merged into another network's id (the
+    same quake would otherwise count twice) or reclassified (quarry blast).
+    They are moved to earthquake_events_removed rather than dropped."""
+    if len(events) < 1000:  # a truncated or empty feed must not empty the table
+        log.info(f"Only {len(events)} events in the feed - skipping the withdrawn-event check")
+        return 0
+    window_start = min(e["event_time"] for e in events) + timedelta(hours=1)
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS earthquake_events_removed
+                (LIKE earthquake_events, removed_at TIMESTAMPTZ)
+            """
+        )
+        cur.execute(
+            """
+            WITH gone AS (
+                DELETE FROM earthquake_events
+                WHERE event_time >= %s AND NOT (event_id = ANY(%s))
+                RETURNING *
+            )
+            INSERT INTO earthquake_events_removed SELECT *, now() FROM gone
+            """,
+            (window_start, [e["event_id"] for e in events]),
+        )
+        removed = cur.rowcount
+    conn.commit()
+    return removed
 
 
 if __name__ == "__main__":
@@ -170,9 +217,11 @@ if __name__ == "__main__":
     try:
         with psycopg2.connect(**PG_CONN_PARAMS) as conn:
             init_db(conn)
-            new_count = insert_events(conn, matched)
+            new_count, revised = upsert_events(conn, matched)
+            removed = remove_withdrawn(conn, matched)
     except Exception as e:
         log.error(f"Error writing to PostgreSQL: {e}")
         sys.exit(1)
 
-    log.info(f"Done. {new_count} new earthquake events inserted (of {len(matched)} matched this run).")
+    log.info(f"Done. {new_count} new earthquake events inserted, {revised} revised by USGS, "
+             f"{removed} withdrawn (of {len(matched)} matched this run).")
